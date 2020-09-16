@@ -8,11 +8,6 @@
     <artifactId>lider-it-test</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <timestamp>${maven.build.timestamp}</timestamp>
-        <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
-    </properties>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
         <dependency>
