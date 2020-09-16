@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- для генерации uuid в postgresql нужен модуль; сгенерировал uuid вручную -->
+    <property name="poll_uuid" value="26a3ce0c-d08a-49f9-9326-1df3c5f194d7"/>
+    <property name="question1_uuid" value="db0d0e7e-27b5-4c26-9b71-738ce7bad1c3"/>
+    <property name="question2_uuid" value="afe84f2d-749c-4c7c-b069-1f6211594280"/>
+    <property name="question3_uuid" value="0ae13095-49e6-42e8-a5ba-3b98c1dcea6a"/>
+
+    <changeSet id="1" author="koppert-igor">
+        <insert tableName="poll">
+            <column name="id" value="${poll_uuid}"/>
+            <column name="end_date" value="2020-09-21"/>
+            <column name="start_date" value="2020-09-14"/>
+            <column name="name" value="Test poll inserted with liquibase"/>
+        </insert>
+        <insert tableName="question">
+            <column name="id" value="${question1_uuid}"/>
+            <column name="order_number" value="1"/>
+            <column name="text" value="question 1 added with liquibase migration"/>
+            <column name="poll_id" value="${poll_uuid}"/>
+        </insert>
+        <insert tableName="question">
+            <column name="id" value="${question2_uuid}"/>
+            <column name="order_number" value="2"/>
+            <column name="text" value="question 2 added with liquibase migration"/>
+            <column name="poll_id" value="${poll_uuid}"/>
+        </insert>
+        <insert tableName="question">
+            <column name="id" value="${question3_uuid}"/>
+            <column name="order_number" value="3"/>
+            <column name="text" value="question 3 added with liquibase migration"/>
+            <column name="poll_id" value="${poll_uuid}"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

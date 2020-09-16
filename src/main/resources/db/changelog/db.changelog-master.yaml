@@ -1,0 +1,58 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-master.yaml
+  - include:
+      file: db/changelog/add-some-polls-and-questions.xml
+  - changeSet:
+      id: 1
+      author: koppert-igor
+      changes:
+        - createTable:
+            tableName: poll
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: end_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: question
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_number
+                  type: int4
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: varchar(2000)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: poll_id
+                  type: uuid
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_poll_id
+                    references: poll(id)
